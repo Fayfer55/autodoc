@@ -8,9 +8,11 @@
 import Foundation
 import OSLog
 
-actor NetworkManager {
+actor NetworkManager: NetworkManagerInterface {
     
     // MARK: - Properties
+    
+    static let shared = NetworkManager()
     
     private let decodeManager: DecodeManagerInterface
     
@@ -21,6 +23,12 @@ actor NetworkManager {
     init(decodeManager: DecodeManagerInterface) {
         self.decodeManager = decodeManager
     }
+    
+    private init() {
+        decodeManager = DecodeManager()
+    }
+    
+    // MARK: - Helpers
     
     func request<T: Decodable>(for url: URL) async throws -> T {
         var request = URLRequest(url: url)
