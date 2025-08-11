@@ -1,0 +1,45 @@
+//
+//  UICollectionView+ReuseIdentifiable.swift
+//  autodoc
+//
+//  Created by Kirill Faifer on 11.08.2025.
+//
+
+import UIKit.UICollectionView
+
+extension UICollectionView {
+
+    func register<T: UICollectionViewCell>(cellType: T.Type) where T: ReuseIdentifiable {
+        register(cellType.self, forCellWithReuseIdentifier: cellType.reuseId)
+    }
+    
+    func dequeueReusableCell<T: UICollectionViewCell>(
+        withCellType type: T.Type = T.self,
+        for indexPath: IndexPath
+    ) -> T where T: ReuseIdentifiable {
+        guard let cell = dequeueReusableCell(withReuseIdentifier: type.reuseId, for: indexPath) as? T else { fatalError(dequeueError(reuseId: type.reuseId))
+        }
+        return cell
+    }
+    
+    func cellForItem<T: UICollectionViewCell>(
+        withCellType type: T.Type = T.self,
+        at indexPath: IndexPath
+    ) -> T where T: ReuseIdentifiable {
+        guard let cell = cellForItem(at: indexPath) as? T else {
+            fatalError(dequeueError(reuseId: type.reuseId))
+        }
+        return cell
+    }
+
+}
+
+// MARK: - Dequeue Error Method
+
+extension UICollectionView {
+
+    private func dequeueError(reuseId: String) -> String {
+        "Couldn't dequeue cell with identifier \(reuseId)"
+    }
+
+}
