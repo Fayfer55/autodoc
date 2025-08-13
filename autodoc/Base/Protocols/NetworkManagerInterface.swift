@@ -9,4 +9,5 @@ import Foundation
 
 protocol NetworkManagerInterface {
     func request<T: Decodable>(for url: URL) async throws -> T
+    func data(from url: URL) async throws -> Data
 }

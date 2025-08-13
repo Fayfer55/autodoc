@@ -43,6 +43,14 @@ actor NetworkManager: NetworkManagerInterface {
         return try decodeManager.decode(data: data)
     }
     
+    func data(from url: URL) async throws -> Data {
+        logger.debug("request data from URL: \(url)")
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        try handle(response: response)
+        return data
+    }
+    
     // MARK: - Private Helpers
     
     private func handle(response: URLResponse) throws {
