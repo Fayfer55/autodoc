@@ -43,8 +43,7 @@ class LoadingImageCollectionCell: UICollectionViewCell, ReuseIdentifiable {
     }
     
     func addSubviews() {
-        contentView.addSubview(imageView)
-        contentView.addSubview(activityIndicator)
+        contentView.addSubviews(imageView, activityIndicator)
     }
     
     func makeConstraints() {
