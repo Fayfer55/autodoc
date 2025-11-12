@@ -11,19 +11,23 @@ struct NewsServiceMock: NewsServiceInterface {
     
     func news(page: Int, articlePerPage: Int) async throws -> News {
         try await Task.sleep(for: .seconds(1))
-        return News(
-            news: [Article(
-                id: 0,
-                title: "Some title",
-                description: "Some description",
-                publishedDate: .now,
-                url: "google.com",
-                fullUrl: "https://google.com",
-                titleImageUrl: .mockCarURL,
-                categoryType: "Auto category"
-            )],
-            totalCount: 1
-        )
+        if articlePerPage > 0 {
+            let articles = (0...articlePerPage - 1).map {
+                Article(
+                    id: $0,
+                    title: "Title #\($0)",
+                    description: "Some not long description",
+                    publishedDate: .now,
+                    url: "",
+                    fullUrl: "",
+                    titleImageUrl: nil,
+                    category: Bool.random() ? .vehicle : .company
+                )
+            }
+            return News(news: articles, totalCount: articles.count)
+        } else {
+            return News(news: [], totalCount: .zero)
+        }
     }
     
 }
