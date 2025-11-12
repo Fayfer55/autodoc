@@ -11,14 +11,32 @@ final class ArticlePreviewSummaryView: UIView {
     
     // MARK: - UI Elements
     
-    private lazy var dateLabel = UILabel()
-    private lazy var titleLabel = UILabel()
-    private lazy var subtitleLabel = UILabel()
+    private lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGray
+        label.font = .systemFont(ofSize: 13, weight: .regular)
+        return label
+    }()
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 17)
+        label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 1
+        return label
+    }()
+    private lazy var subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 13, weight: .medium)
+        label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 2
+        return label
+    }()
     
     private lazy var categoryView = ArticlePreviewCategoryView()
     
     private lazy var horizontalStack: UIStackView = {
         let view = UIStackView(arrangedSubviews: [categoryView, dateLabel])
+        view.distribution = .equalCentering
         return view
     }()
     
@@ -67,7 +85,7 @@ extension ArticlePreviewSummaryView {
     func configure(model: ArticlePreviewModel) {
         categoryView.configure(category: model.category)
         
-        dateLabel.text = model.date.description
+        dateLabel.text = model.date.formatted(date: .abbreviated, time: .omitted)
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
     }
