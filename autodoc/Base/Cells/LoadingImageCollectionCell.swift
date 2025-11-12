@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoadingImageCollectionCell: UICollectionViewCell, ReuseIdentifiable {
+class LoadingImageCollectionCell: BaseCollectionCell {
     
     // MARK: - UI Elements
     
@@ -38,15 +38,11 @@ class LoadingImageCollectionCell: UICollectionViewCell, ReuseIdentifiable {
     
     // MARK: - Layout
     
-    func configureAppearance() {
-        contentView.backgroundColor = .systemBackground
-    }
-    
-    func addSubviews() {
+    override func addSubviews() {
         contentView.addSubviews(imageView, activityIndicator)
     }
     
-    func makeConstraints() {
+    override func makeConstraints() {
         let imageViewConstraints = [
             imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
