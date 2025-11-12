@@ -11,8 +11,18 @@ final class ArticlePreviewCategoryView: UIView {
     
     // MARK: - UI Elements
     
-    private lazy var imageView = UIImageView()
-    private lazy var label = UILabel()
+    private lazy var imageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.tintColor = .black
+        return view
+    }()
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.font = .systemProRoundedFont(ofSize: 13, weight: .medium)
+        return label
+    }()
     
     private lazy var horizontalStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [imageView, label])
@@ -45,9 +55,15 @@ final class ArticlePreviewCategoryView: UIView {
             horizontalStackView.widthAnchor.constraint(equalTo: widthAnchor),
             horizontalStackView.heightAnchor.constraint(equalTo: heightAnchor)
         ]
-        
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(constraints)
+        horizontalStackView.activate(constraints: constraints)
+    }
+    
+    private func activateImageViewConstraints() {
+        let constraints = [
+            imageView.widthAnchor.constraint(equalToConstant: 18),
+            imageView.heightAnchor.constraint(equalToConstant: 18)
+        ]
+        imageView.activate(constraints: constraints)
     }
     
 }
