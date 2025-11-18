@@ -39,23 +39,32 @@ class LoadingImageCollectionCell: BaseCollectionCell {
     // MARK: - Layout
     
     override func addSubviews() {
-        contentView.addSubviews(imageView, activityIndicator)
+        imageView.addSubview(activityIndicator)
+        contentView.addSubviews(imageView)
     }
     
     override func makeConstraints() {
-        let imageViewConstraints = [
-            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
-        ]
-        let activityIndicatorConstraints = [
-            activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ]
+        activateImageViewConstraints()
+        activateActivityIndicatorConstraints()
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(imageViewConstraints)
-        NSLayoutConstraint.activate(activityIndicatorConstraints)
+    }
+    
+    private func activateImageViewConstraints() {
+        let imageViewConstraints = [
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ]
+        imageView.activate(constraints: imageViewConstraints)
+    }
+    
+    private func activateActivityIndicatorConstraints() {
+        let activityIndicatorConstraints = [
+            activityIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
+        ]
+        activityIndicator.activate(constraints: activityIndicatorConstraints)
     }
     
 }
