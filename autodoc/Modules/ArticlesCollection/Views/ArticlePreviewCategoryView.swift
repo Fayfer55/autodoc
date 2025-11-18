@@ -55,8 +55,10 @@ final class ArticlePreviewCategoryView: UIView {
     
     private func makeConstraints() {
         let constraints = [
-            horizontalStackView.widthAnchor.constraint(equalTo: widthAnchor),
-            horizontalStackView.heightAnchor.constraint(equalTo: heightAnchor)
+            horizontalStackView.topAnchor.constraint(equalTo: topAnchor),
+            horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            horizontalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            horizontalStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ]
         horizontalStackView.activate(constraints: constraints)
     }
