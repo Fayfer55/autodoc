@@ -9,6 +9,7 @@ import Foundation
 
 struct ArticlePreviewModel: Hashable {
     
+    let uuid = UUID()
     let title: String
     let subtitle: String
     let imageURL: URL?
