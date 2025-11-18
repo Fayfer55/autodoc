@@ -68,12 +68,12 @@ final class ArticlePreviewSummaryView: UIView {
     
     private func makeConstraints() {
         let constraints = [
-            verticalStack.widthAnchor.constraint(equalTo: widthAnchor),
-            verticalStack.heightAnchor.constraint(equalTo: heightAnchor)
+            verticalStack.topAnchor.constraint(equalTo: topAnchor),
+            verticalStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            verticalStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            verticalStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ]
-        
-        verticalStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(constraints)
+        verticalStack.activate(constraints: constraints)
     }
     
 }
