@@ -32,8 +32,6 @@ class LoadingImageCollectionCell: BaseCollectionCell {
         configureAppearance()
         addSubviews()
         makeConstraints()
-        
-        activityIndicator.startAnimating()
     }
     
     // MARK: - Layout
