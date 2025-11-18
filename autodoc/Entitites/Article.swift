@@ -20,10 +20,10 @@ struct Article: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case id, title, description, url
-        case titleImageUrl = "title_image_url"
-        case fullUrl = "full_url"
-        case publishedDate = "published_date"
-        case category = "category_type"
+        case titleImageUrl
+        case fullUrl
+        case publishedDate
+        case category = "categoryType"
     }
     
 }
@@ -41,7 +41,7 @@ extension Article {
         publishedDate = try container.decode(Date.self, forKey: .publishedDate)
         url = try container.decode(String.self, forKey: .url)
         fullUrl = try container.decode(String.self, forKey: .fullUrl)
-        titleImageUrl = try container.decode(String?.self, forKey: .titleImageUrl)
+        titleImageUrl = try container.decodeIfPresent(String.self, forKey: .titleImageUrl)
         category = try container.decode(Category.self, forKey: .category)
     }
     
