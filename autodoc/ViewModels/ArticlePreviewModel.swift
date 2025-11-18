@@ -12,7 +12,7 @@ struct ArticlePreviewModel: Hashable {
     let title: String
     let subtitle: String
     let imageURL: URL?
-    let date: Date
+    let date: String
     let category: Article.Category
     
 }

@@ -85,7 +85,7 @@ extension ArticlePreviewSummaryView {
     func configure(model: ArticlePreviewModel) {
         categoryView.configure(category: model.category)
         
-        dateLabel.text = model.date.formatted(date: .abbreviated, time: .omitted)
+        dateLabel.text = model.date
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
     }
