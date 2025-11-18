@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NewsServiceInterface {
-    func news(page: Int, articlePerPage: Int) async throws -> News
+    func news(page: Int, articlesPerPage: Int) async throws -> News
 }

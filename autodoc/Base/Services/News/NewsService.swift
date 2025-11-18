@@ -13,8 +13,8 @@ struct NewsService: NewsServiceInterface {
     
     // MARK: - NewsServiceInterface
     
-    func news(page: Int, articlePerPage: Int) async throws -> News {
-        guard let url = URL(string: "https://webapi.autodoc.ru/api/news/\(page)/\(articlePerPage)") else {
+    func news(page: Int, articlesPerPage: Int) async throws -> News {
+        guard let url = URL(string: "https://webapi.autodoc.ru/api/news/\(page)/\(articlesPerPage)") else {
             throw URLError(.badURL)
         }
         return try await networkService.request(for: url)

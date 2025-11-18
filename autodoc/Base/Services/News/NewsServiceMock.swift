@@ -9,18 +9,18 @@ import Foundation
 
 struct NewsServiceMock: NewsServiceInterface {
     
-    func news(page: Int, articlePerPage: Int) async throws -> News {
+    func news(page: Int, articlesPerPage: Int) async throws -> News {
         try await Task.sleep(for: .seconds(1))
-        if articlePerPage > 0 {
-            let articles = (0...articlePerPage - 1).map {
+        if articlesPerPage > 0 {
+            let articles = (0...articlesPerPage - 1).map {
                 Article(
-                    id: $0,
-                    title: "Title #\($0)",
+                    id: (page - 1) * articlesPerPage + $0,
+                    title: "Title #\((page - 1) * articlesPerPage + $0)",
                     description: "Some not long description",
                     publishedDate: .now,
                     url: "",
                     fullUrl: "",
-                    titleImageUrl: nil,
+                    titleImageUrl: Bool.random() ? .mockCarURL : nil,
                     category: Bool.random() ? .vehicle : .company
                 )
             }
