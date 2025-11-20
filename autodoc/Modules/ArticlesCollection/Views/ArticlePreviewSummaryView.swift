@@ -9,26 +9,38 @@ import UIKit
 
 final class ArticlePreviewSummaryView: UIView {
     
+    private enum Constants {
+        static let dateLabelFontSize: CGFloat = 13
+        
+        static let titleLabelFontSize: CGFloat = 17
+        static let titleLabelNumberOfLines: Int = 1
+        
+        static let subtitleLabelFontSize: CGFloat = 13
+        static let subtitlesLabelNumberOfLines: Int = 2
+        
+        static let verticalStackSpacing: CGFloat = 4
+    }
+    
     // MARK: - UI Elements
     
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
-        label.font = .systemFont(ofSize: 13, weight: .regular)
+        label.font = .systemFont(ofSize: Constants.dateLabelFontSize, weight: .regular)
         return label
     }()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 17)
+        label.font = .boldSystemFont(ofSize: Constants.titleLabelFontSize)
         label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 1
+        label.numberOfLines = Constants.titleLabelNumberOfLines
         return label
     }()
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 13, weight: .medium)
+        label.font = .systemFont(ofSize: Constants.subtitleLabelFontSize, weight: .medium)
         label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 2
+        label.numberOfLines = Constants.subtitlesLabelNumberOfLines
         return label
     }()
     
@@ -43,7 +55,7 @@ final class ArticlePreviewSummaryView: UIView {
     private lazy var verticalStack: UIStackView = {
         let view = UIStackView(arrangedSubviews: [horizontalStack, titleLabel, subtitleLabel])
         view.axis = .vertical
-        view.spacing = 4
+        view.spacing = Constants.verticalStackSpacing
         return view
     }()
     
