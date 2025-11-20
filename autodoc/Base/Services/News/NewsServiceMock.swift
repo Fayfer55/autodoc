@@ -24,7 +24,7 @@ struct NewsServiceMock: NewsServiceInterface {
                     category: Bool.random() ? .vehicle : .company
                 )
             }
-            return News(news: articles, totalCount: articles.count)
+            return News(news: articles, totalCount: 100)
         } else {
             return News(news: [], totalCount: .zero)
         }
