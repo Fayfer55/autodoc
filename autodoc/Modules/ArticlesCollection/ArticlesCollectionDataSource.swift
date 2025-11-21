@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ArticlesCollectionSection {
+enum ArticlesCollectionSection: Int {
     case news
 }
 
