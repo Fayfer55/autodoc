@@ -8,5 +8,6 @@
 import Foundation
 
 enum DateFormat: String {
+    case server = "yyyy-MM-dd'T'HH:mm:ss"
     case ddMMMM = "dd MMMM"
 }
