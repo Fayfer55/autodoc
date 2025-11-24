@@ -67,11 +67,9 @@ final class ErrorView: UIView {
         makeConstraints()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        addSubviews()
-        makeConstraints()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Layout

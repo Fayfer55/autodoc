@@ -22,12 +22,6 @@ class LoadingImageCollectionCell: BaseCollectionCell {
         setupCell()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupCell()
-    }
-    
     private func setupCell() {
         configureAppearance()
         addSubviews()
