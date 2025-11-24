@@ -12,6 +12,10 @@ import OSLog
 /// https://git.ltst.su/ios-public/awaitnetworkservice
 actor NetworkManager: NetworkManagerInterface {
     
+    private enum Constants {
+        static let timeoutInterval: TimeInterval = 10
+    }
+    
     // MARK: - Properties
     
     static let shared = NetworkManager()
@@ -34,7 +38,7 @@ actor NetworkManager: NetworkManagerInterface {
     
     func request<T: Decodable>(for url: URL) async throws -> T {
         var request = URLRequest(url: url)
-        request.timeoutInterval = 10
+        request.timeoutInterval = Constants.timeoutInterval
         
         logger.debug("request for URL: \(url.absoluteString)")
         
