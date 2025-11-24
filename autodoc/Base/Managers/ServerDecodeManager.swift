@@ -1,5 +1,5 @@
 //
-//  DecodeManager.swift
+//  ServerDecodeManager.swift
 //  autodoc
 //
 //  Created by Kirill Faifer on 08.08.2025.
@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-final class DecodeManager: DecodeManagerInterface {
+final class ServerDecodeManager: DecodeManagerInterface {
     
     private enum Constants {
         static let serverDateLocale = Locale(identifier: "en_US_POSIX")

@@ -27,7 +27,7 @@ actor NetworkManager: NetworkManagerInterface {
     }
     
     private init() {
-        decodeManager = DecodeManager()
+        decodeManager = ServerDecodeManager()
     }
     
     // MARK: - Helpers
