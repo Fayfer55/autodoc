@@ -8,11 +8,26 @@
 import Foundation
 import OSLog
 
-struct DecodeManager: DecodeManagerInterface {
+final class DecodeManager: DecodeManagerInterface {
     
-    private let decoder: JSONDecoder = {
+    private enum Constants {
+        static let serverDateLocale = Locale(identifier: "en_US_POSIX")
+        static let serverTimeZone = TimeZone(secondsFromGMT: 0)
+    }
+    
+    // MARK: - Properties
+    
+    private lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormat.server.rawValue
+        formatter.locale = Constants.serverDateLocale
+        formatter.timeZone = Constants.serverTimeZone
+        return formatter
+    }()
+    
+    private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .formatted(formatter)
         return decoder
     }()
     
