@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-/// I built a package for network by myself.  I started it when swift concurrency was just released and there was no Alamofire support for it yet. So i support it while i was working at a previous job. Of course, there are a lot of improvement opportunities in it)
+/// I built a package for a network by myself. I started when the swift concurrency was just released and there was no Alamofire support for it yet. So i supported it while i was working at the previous job
 /// https://git.ltst.su/ios-public/awaitnetworkservice
 actor NetworkManager: NetworkManagerInterface {
     
