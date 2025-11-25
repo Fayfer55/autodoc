@@ -16,6 +16,8 @@ final class ArticlesCollectionViewController: UICollectionViewController {
     
     // MARK: - DI
     
+    weak var delegate: ArticlesCollectionDelegate?
+    
     private let newsProvider: NewsFetchInterface
     private let layoutProvider: CollectionLayoutProtocol
     
@@ -202,6 +204,12 @@ extension ArticlesCollectionViewController {
             cell.activityIndicator.stopAnimating()
             viewModel.cancelImageFetch(for: imageURL)
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let items = dataSource.snapshot().itemIdentifiers(inSection: .news)
+        guard case let .preview(model) = items[indexPath.item] else { return }
+        delegate?.articleDidSelect(for: model)
     }
     
 }
