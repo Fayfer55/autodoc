@@ -15,5 +15,6 @@ struct ArticlePreviewModel: Hashable {
     let imageURL: URL?
     let date: String
     let category: Article.Category
+    let articleURL: String
     
 }

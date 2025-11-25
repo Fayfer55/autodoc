@@ -160,7 +160,8 @@ extension ArticlesCollectionViewController {
                 subtitle: $0.description,
                 imageURL: URL(string: $0.titleImageUrl ?? .empty),
                 date: stringFromDate($0.publishedDate),
-                category: $0.category
+                category: $0.category,
+                articleURL: $0.fullUrl
             ))
         }
         
