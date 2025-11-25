@@ -14,7 +14,7 @@ final class ArticlePreviewCategoryView: UIView {
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.tintColor = .black
+        view.tintColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
         return view
     }()
     private lazy var label: UILabel = {
