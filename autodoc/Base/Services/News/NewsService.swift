@@ -9,7 +9,7 @@ import Foundation
 
 struct NewsService: NewsServiceInterface {
     
-    private let networkService = NetworkManager.shared
+    let networkService: NetworkManagerInterface
     
     // MARK: - NewsServiceInterface
     

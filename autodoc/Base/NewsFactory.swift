@@ -18,13 +18,15 @@ struct NewsFactory {
     // MARK: - Helpers
     
     static func makeNewsModule(device: UIUserInterfaceIdiom) -> UIViewController {
-        let newsService = NewsService()
+        let networkManager = NetworkManager.shared
+        let imageManager = ImageManager.shared
+        
+        let newsService = NewsService(networkService: networkManager)
         let newsViewModel = NewsViewModel(
             newsService: newsService,
             articlesPerPage: device == .phone ? Constants.phoneArticlesPerPage : Constants.padArticlesPerPage
         )
         
-        let imageManager = ImageManager.shared
         let articlesViewModel = ArticlesCollectionViewModel(imageManager: imageManager)
         let layoutProvider = ArticlesCollectionLayoutManager()
         let articlesCollection = ArticlesCollectionViewController(
