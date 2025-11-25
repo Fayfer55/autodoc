@@ -36,7 +36,7 @@ final class ArticlesCollectionViewModel: ArticlesCollectionViewModelInterface {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let image = try await ImageManager.shared.image(for: url)
+                let image = try await imageManager.image(for: url)
                 guard !Task.isCancelled else { return }
                 imageSubject.send((image, indexPath))
             } catch {
@@ -47,7 +47,7 @@ final class ArticlesCollectionViewModel: ArticlesCollectionViewModelInterface {
     
     func cancelImageFetch(for url: URL) {
         Task {
-            await ImageManager.shared.cancelFetching(for: url)
+            await imageManager.cancelFetching(for: url)
         }
     }
     
