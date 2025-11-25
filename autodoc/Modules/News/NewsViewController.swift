@@ -109,6 +109,7 @@ final class NewsViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 articlesCollection.append(articles: articles)
             }
+        articlesCollection.delegate = self
     }
     
     private func fetchArticles() {
@@ -128,6 +129,22 @@ final class NewsViewController: UIViewController {
         errorView.isHidden = true
         activityIndicator.startAnimating()
         fetchArticles()
+    }
+    
+}
+
+// MARK: - ArticlesCollectionDelegate
+
+extension NewsViewController: ArticlesCollectionDelegate {
+    
+    func articleDidSelect(for model: ArticlePreviewModel) {
+        let viewController = WebFactory.makeWebViewModule(stringURL: model.articleURL)
+        
+        if let navigationController {
+            navigationController.pushViewController(viewController, animated: true)
+        } else {
+            present(viewController, animated: true)
+        }
     }
     
 }
